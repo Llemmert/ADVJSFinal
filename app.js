@@ -15,7 +15,7 @@ const username = 'Lemmert';
 // FIXME
 const password = 'BL8TI29wt3g0ak3e'
 //FIXME change the URL @cluster address!
-var mongo_db_url = `mongodb+srv://${username}:${password}@testcluster.yrsb5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+var mongo_db_url = `mongodb+srv://${username}:${password}@testcluster.yrsb5.mongodb.net/QuizNinjas?retryWrites=true&w=majority`
 
 var mongoDB = process.env.MONGODB_URI || mongo_db_url
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
