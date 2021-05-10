@@ -10,4 +10,4 @@ var UserSchema = new Schema({
 })
 
 // Export model
-module.exports = mongoose.model("User", UserSchema, "users")
+module.exports = mongoose.model("QuizNinjas", UserSchema, "users")

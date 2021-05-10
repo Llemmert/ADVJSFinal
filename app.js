@@ -11,12 +11,12 @@ var reactViews = require('express-react-views');
 // Set up mongoose connection
 var mongoose = require("mongoose")
 // FIXME
-const username = 'paste username';
+const username = 'Lemmert';
 // FIXME
-const password = 'paste password'
-const db_name = 'gradebook-v2'
+const password = 'BL8TI29wt3g0ak3e'
+const db_name = 'quizNinjas'
 //FIXME change the URL @cluster address!
-var mongo_db_url = `mongodb+srv://${username}:${password}@cluster0.qdxhi.mongodb.net/${db_name}?retryWrites=true&w=majority`
+var mongo_db_url = `mongodb+srv://${username}:${password}@testcluster.yrsb5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
 var mongoDB = process.env.MONGODB_URI || mongo_db_url
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
