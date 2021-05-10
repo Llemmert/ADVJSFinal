@@ -14,7 +14,6 @@ var mongoose = require("mongoose")
 const username = 'Lemmert';
 // FIXME
 const password = 'BL8TI29wt3g0ak3e'
-const db_name = 'quizNinjas'
 //FIXME change the URL @cluster address!
 var mongo_db_url = `mongodb+srv://${username}:${password}@testcluster.yrsb5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 

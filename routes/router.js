@@ -13,7 +13,7 @@ var User = require("../models/user")
 var Course = require("../models/course")
 const { MongoError } = require("mongodb")
 
-let title = "Grade Book"
+let title = "Quiz Ninjas"
 
 function userLoggedIn(req, res) {
   let user = req.session.user
