@@ -4,19 +4,19 @@ import Layout from './layout';
 
 function QuestionTable(props) {
     return (
-      <table class="table">
-          <thead id="thead">
-              <tr id="tr">
-                <th id ="th">Question Wording</th>
-                <th id ="th">Question Answer</th>
-                <th id ="th">Question Type</th>
+      <table>
+          <thead>
+              <tr>
+                <th>Question Wording</th>
+                <th>Question Answer</th>
+                <th>Question Type</th>
               </tr>
           </thead>
             {props.questions.map(question => (
-            <tbody id="tbody"><tr id="tr">
-                <td id="td"><strong id="strong">{question.qWording}</strong></td>
-                <td id="td">{question.answer}</td>
-                <td id="td">{question.roundType}</td>
+            <tbody><tr>
+                <td><strong>{question.qWording}</strong></td>
+                <td>{question.answer}</td>
+                <td>{question.roundType}</td>
             </tr></tbody> 
             ))}
       </table>

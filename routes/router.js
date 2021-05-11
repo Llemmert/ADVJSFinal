@@ -1,3 +1,5 @@
+import '../public/stylesheets/table.css';
+
 var express = require("express")
 var router = express.Router()
 // https://github.com/dcodeIO/bcrypt.js
