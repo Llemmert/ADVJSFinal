@@ -13,7 +13,7 @@ function QuestionTable(props){
               </tr>
           </thead>
             {props.questions.map(question => (
-            <tbody><tr class={styles.tr}>
+            <tbody><tr>
                 <td><strong>{question.qWording}</strong></td>
                 <td>{question.answer}</td>
                 <td>{question.roundType}</td>
