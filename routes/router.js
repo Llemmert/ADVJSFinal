@@ -153,14 +153,14 @@ router.post(
   [
     // Validate fields.
     // express-validator
-    check("QWording", "Question must not be blank")
+    check("qWording", "Question must not be blank")
       .trim()
       .isLength({ min: 1 })
       .withMessage('Question must be at least 1 character'),
-    check("QAnswer", "Answer must not be empty.")
+    check("qAnswer", "Answer must not be empty.")
       .trim()
       .isLength({ min: 1 }),
-    check("QType", "Question Type must not be empty.")
+    check("qType", "Question Type must not be empty.")
       .trim()
       .isLength({ min: 1 })
       .withMessage('Question Type must be at least 1 character long'),
