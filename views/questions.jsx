@@ -13,17 +13,17 @@ function QuestionTable(props) {
                 <th>Question Type</th>
               </tr>
           </thead>
-        <tbody>
           {
+            
             props.questions.map(question => (
-            <tr>
+            <tbody><tr>
                 <td><strong>{question.qWording}</strong></td>
                 <td>{question.answer}</td>
                 <td>{question.roundType}</td>
-            </tr>
+            </tr></tbody> 
             ))
           }
-        </tbody>
+
       </table>
     )
   }
