@@ -184,9 +184,9 @@ router.post(
     } else {
       // create a question document and insert into mongodb collection
       let question = new Question({
-        qWording: req.body.QWording,
-        answer: req.body.fullName,
-        roundType: req.body.QType,
+        qWording: req.body.qWording,
+        answer: req.body.qAnswer,
+        roundType: req.body.qType,
       })
       question.save(err => {
         if (err) {

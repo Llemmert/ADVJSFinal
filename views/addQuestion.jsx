@@ -9,13 +9,13 @@ function AddQuestion(props) {
       <Message messages={props.errors} />
       <form method="POST" action="/addQuestion">
         <label>
-          <input type="text" name="QWording" required placeholder="Question Wording" />
+          <input type="text" name="qWording" required placeholder="Question Wording" />
         </label><br />
         <label>
-          <input type="text" name="QAnswer" required placeholder="Question Answer" />
+          <input type="text" name="qAnswer" required placeholder="Question Answer" />
         </label><br />
         <label>
-          <input type="text" name="QType" required placeholder="Question Type" />
+          <input type="text" name="qType" required placeholder="Question Type" />
         </label>
         <br /> <br />
         <button type="submit">Add Question</button>
