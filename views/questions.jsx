@@ -1,17 +1,22 @@
 import React from 'react'
 import question from '../models/questions'
 import Layout from './layout'
+import '../public/stylesheets/table.css';
 
 function QuestionTable(props) {
     return (
       <table>
-        <tbody>
           <thead>
-            <td>Question Wording</td><td>Question Answer</td><td>Question Type</td>
+              <tr>
+            <th>Question Wording</th>
+            <th>Question Answer</th>
+            <th>Question Type</th>
+            </tr>
           </thead>
+        <tbody>
           {
             props.questions.map(question => (
-              <tr><td>{question.qWording}</td>
+              <tr><td><strong>{question.qWording}</strong></td>
                 <td>{question.answer}</td>
                 <td>{question.roundType}</td>
               </tr>
