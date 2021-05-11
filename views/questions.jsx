@@ -1,10 +1,11 @@
 import React from 'react';
 import question from '../models/questions';
 import Layout from './layout';
+import styles from '../public/stylesheets/table.module.css';
 
 function QuestionTable(props) {
     return (
-      <table>
+      <table class={styles.table}>
           <thead>
               <tr>
                 <th>Question Wording</th>
