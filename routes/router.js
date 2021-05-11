@@ -205,14 +205,15 @@ router.post(
 )
 
 router.get("/questions", function (req, res, next) {
-  // get logged in user
-  let user = userLoggedIn(req, res)
+  Course.find({answer: any}, (err, questions) => {
+    if (err) throw err;
+    //console.log(courses)
     res.render("questions", {
-      title: "All questions",
+      title: "All Questions",
       questions: questions,
       errors: []
     })
-  });
+  })
 
 router.get("/logout", (req, res, next) => {
   var user = req.session.user
