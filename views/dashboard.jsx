@@ -7,7 +7,7 @@ function Dashboard(props) {
       <h1>{props.title}</h1>
       <h2>Student Grades</h2>
       <h3>Welcome, {props.user.email}</h3>
-      <a href="/courses/">Courses</a> | <a href="/users/profile">Profile</a> | <a href="/logout">Log out</a> | <a href="/addQuestion">Add Question</a>
+      <a href="/courses/">Courses</a> | <a href="/users/profile">Profile</a> | <a href="/logout">Log out</a> | <a href="/addQuestion">Add Question</a> | <a href="/questions">Questions</a>
     </Layout>
   );
 }
