@@ -16,12 +16,6 @@ function AddQuestion(props) {
         </label><br />
         <label>
           <input type="text" name="QType" required placeholder="Question Type" />
-        </label><br />
-        <label>
-          <input type="password" name="password" required placeholder="Password" />
-        </label><br />
-        <label>
-          <input type="password" name="password1" required placeholder="Re-enter password" />
         </label>
         <br /> <br />
         <button type="submit">Add Question</button>
