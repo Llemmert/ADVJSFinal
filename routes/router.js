@@ -11,6 +11,7 @@ const { sanitizeBody } = require("express-validator/filter")
 // import models
 var User = require("../models/user")
 var Course = require("../models/course")
+var Question = require("../models/questions")
 const { MongoError } = require("mongodb")
 
 let title = "Quiz Ninjas"
@@ -138,6 +139,68 @@ router.post(
         //res.redirect("/grade")
         res.redirect('/login')
       })
+    }
+  }
+)
+
+router.get("/addQuestion", function (req, res, next) {
+  res.render("addQuestion", { title: "Add a Question to the Quiz" })
+})
+
+
+router.post(
+  "/addQuestion",
+  [
+    // Validate fields.
+    // express-validator
+    check("QWording", "Question must not be blank")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Question must be at least 1 character'),
+    check("QAnswer", "Answer must not be empty.")
+      .trim()
+      .isLength({ min: 1 }),
+    check("QType", "Question Type must not be empty.")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Question Type must be at least 1 character long'),
+    // Sanitize all fields.
+    sanitizeBody("*")
+      .trim()
+      .escape()
+  ],
+  function (req, res) {
+    // check authentication
+    var user = userLoggedIn(req, res)
+    // extract the validation errors from a request
+    const errors = validationResult(req)
+    // check if there are errors
+    if (!errors.isEmpty()) {
+      let context = {
+        title: "Add a New Question",
+        errors: errors.array()
+      }
+      res.render("./addQuestion", context)
+    } else {
+      // create a question document and insert into mongodb collection
+      let question = new Question({
+        qWording: req.body.QWording,
+        answer: req.body.fullName,
+        roundType: req.body.QType,
+      })
+      question.save(err => {
+        if (err) {
+          return next(err)
+        }
+        // successful - redirect to dashboard
+        // add update user to session
+        console.log('Question addition successful:', user)
+        //req.session.user = user
+        //res.redirect("/grade")
+        res.redirect('/addQuestion')
+      })
+      // successful - redirect to dashboard
+      //res.redirect("/courses")
     }
   }
 )
