@@ -213,7 +213,8 @@ router.get("/questions", function (req, res, next) {
       questions: questions,
       errors: []
     })
-  })
+  });
+})
 
 router.get("/logout", (req, res, next) => {
   var user = req.session.user
