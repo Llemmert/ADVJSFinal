@@ -147,7 +147,6 @@ router.get("/addQuestion", function (req, res, next) {
   res.render("addQuestion", { title: "Add a Question to the Quiz" })
 })
 
-
 router.post(
   "/addQuestion",
   [
@@ -204,6 +203,20 @@ router.post(
     }
   }
 )
+
+router.get("/questions", function (req, res, next) {
+  // get logged in user
+  let user = userLoggedIn(req, res)
+  Question.find({user_id: user._id}, (err, questions) => {
+    if (err) throw err;
+    //console.log(courses)
+    res.render("questions", {
+      title: "All questions",
+      questions: questions,
+      errors: []
+    })
+  });
+})
 
 router.get("/logout", (req, res, next) => {
   var user = req.session.user
