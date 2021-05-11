@@ -7,9 +7,9 @@ function QuestionTable(props){
       <table>
           <thead>
               <tr>
-                <th>Question Wording</th>
-                <th>Question Answer</th>
-                <th>Question Type</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Type</th>
               </tr>
           </thead>
             {props.questions.map(question => (
