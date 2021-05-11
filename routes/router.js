@@ -205,7 +205,7 @@ router.post(
 )
 
 router.get("/questions", function (req, res, next) {
-  Course.find({answer: any}, (err, questions) => {
+  Question.find({}, (err, questions) => {
     if (err) throw err;
     //console.log(courses)
     res.render("questions", {
