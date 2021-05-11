@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import '../public/stylesheets/table.css';
 
 function Layout(props) {
   return (
