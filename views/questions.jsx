@@ -1,4 +1,3 @@
-import '../public/stylesheets/table.css';
 import React from 'react'
 import question from '../models/questions'
 import Layout from './layout'
