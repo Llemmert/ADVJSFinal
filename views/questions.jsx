@@ -27,7 +27,7 @@ function QuestionTable(props) {
     if (props.questions.length > 0) 
       questions = <QuestionTable questions={props.questions} />
     else
-      questions = questions = <QuestionTable questions={props.questions} />
+      questions = <p>No questions found. <a href="/addQuestion">Add a new question</a></p>
   
     return (
       <Layout title={props.title}>
