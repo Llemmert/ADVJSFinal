@@ -11,7 +11,7 @@ function QuestionTable(props) {
           </thead>
           {
             props.questions.map(question => (
-              <tr><td><a href={"/addQuestion" + question._id}>{question.qWording}</a></td>
+              <tr><td>{question.qWording}</td>
                 <td>{question.answer}</td>
                 <td>{question.roundType}</td>
               </tr>
@@ -24,7 +24,7 @@ function QuestionTable(props) {
   
   export default function Questions(props) {
     let questions;
-    if (props.questions.length > 0) 
+    if (props.questions.length = 0) 
       questions = <QuestionTable questions={props.questions} />
     else
       questions = <p>No questions found. <a href="/addQuestion">Add a new question</a></p>
