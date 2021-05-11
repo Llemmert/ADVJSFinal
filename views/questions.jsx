@@ -11,7 +11,7 @@ function QuestionTable(props) {
           </thead>
           {
             props.questions.map(question => (
-              <tr><td><a href={"/question/" + question._id}>{question.qWording}</a></td>
+              <tr><td><a href={"/addQuestion" + question._id}>{question.qWording}</a></td>
                 <td>{question.answer}</td>
                 <td>{question.roundType}</td>
               </tr>

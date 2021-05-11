@@ -31,7 +31,7 @@ router.get("/", function (req, res, next) {
 router.get("/dashboard", (req, res, next) => {
   let user = userLoggedIn(req, res)
     res.render("dashboard", {
-      title: "Gradebook Dashboard",
+      title: "Quiz Ninjas Dashboard",
       user: user,
   })
 })
