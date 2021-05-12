@@ -19,7 +19,7 @@ const columns = [{
 
   const options = {
     paginationSize: 15,
-    pageStartIndex: 0,
+    pageStartIndex: 1,
     firstPageText: 'First',
     prePageText: 'Back',
     nextPageText: 'Next',
@@ -29,15 +29,21 @@ const columns = [{
     firstPageTitle: 'Next page',
     lastPageTitle: 'Last page',
     sizePerPageList: [{
-      text: 'Show 20', value: 20
+      text: 'show 15', value: 15
+    }, {
+      text: 'show 30', value: 30
+    }, {
+      text: 'Show all', value: allQuestions
     }]
   };
     return (
-      <BootstrapTable
+      props.questions.map(question => (
+  <BootstrapTable
         keyField='rowNumber'
         data={ props.questions }
         columns={ columns }
         pagination={ paginationFactory(options) } />
+        ))
     )
   }
   
