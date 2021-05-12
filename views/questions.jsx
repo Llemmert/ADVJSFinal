@@ -54,7 +54,7 @@ const columns = [{
   
     return (
 
-        {questions}
+        questions
 
     );
   }
