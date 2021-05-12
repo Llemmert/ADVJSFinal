@@ -37,13 +37,11 @@ const columns = [{
     }]
   };
     return (
-      props.questions.map(question => (
   <BootstrapTable
         keyField='rowNumber'
         data={ props.questions }
         columns={ columns }
         pagination={ paginationFactory() } />
-        ))
     )
   }
   
