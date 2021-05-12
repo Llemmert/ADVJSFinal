@@ -18,7 +18,7 @@ const columns = [{
   let allQuestions = Number(props.questions.length)
 
   const options = {
-    paginationSize: allQuestions,
+    paginationSize: 50,
     pageStartIndex: 0,
     firstPageText: 'First',
     prePageText: 'Back',
