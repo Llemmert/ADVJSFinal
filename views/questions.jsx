@@ -19,18 +19,12 @@ const columns = [{
 
   const options = {
     paginationSize: 15,
-    pageStartIndex:1,
+    pageStartIndex: 1,
     firstPageText: 'First',
     prePageText: 'Back',
     nextPageText: 'Next',
     lastPageText: 'Last',
-    sizePerPageList: [{
-      text: 'show 15', value: 15},
-      {
-        text: 'show 30', value: 30},
-        {
-          text: 'Show all', value: allQuestions
-        }]
+    sizePerPageList: [{text: 'show 15', value: 15}]
   };
     return (
       <BootstrapTable
