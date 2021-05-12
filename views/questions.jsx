@@ -4,6 +4,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import question from '../models/questions';
 import Layout from './layout';
 
+function QuestionTable(props){
 const columns = [{
   dataField: question.qWording,
   text: 'Question Wording'},
@@ -35,8 +36,6 @@ const columns = [{
           text: 'Show all', value: allQuestions
         }]
   };
-
-function QuestionTable(props){
     return (
       <BootstrapTable
         keyField='rowNumber'
