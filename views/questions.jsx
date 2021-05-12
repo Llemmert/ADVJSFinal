@@ -42,7 +42,7 @@ const columns = [{
         keyField='rowNumber'
         data={ props.questions }
         columns={ columns }
-        pagination={ paginationFactory(options) } />
+        pagination={ paginationFactory() } />
         ))
     )
   }
