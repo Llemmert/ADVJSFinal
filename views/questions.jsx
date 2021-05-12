@@ -19,72 +19,37 @@ const columns = [{
 
   const options = {
     custom: true,
-    totalSize: allQuestions
+    paginationSize: 15,
+    pageStartIndex: 1,
+    firstPageText: 'First',
+    prePageText: 'Back',
+    nextPageText: 'Next',
+    lastPageText: 'Last',
+    nextPageTitle: 'First page',
+    prePageTitle: 'Pre page',
+    firstPageTitle: 'Next page',
+    lastPageTitle: 'Last page',
+    sizePerPageList: [{
+      text: 'show 15', value: 15
+    }, {
+      text: 'show 30', value: 30
+    }, {
+      text: 'Show all', value: allQuestions
+    }]
   };
-  class FullyCustomPagination extends React.Component {
-    handleNextPage = ({
-      page,
-      onPageChange
-    }) => () => {
-      onPageChange(page + 1);
-    }
-  
-    handlePrevPage = ({
-      page,
-      onPageChange
-    }) => () => {
-      onPageChange(page - 1);
-    }
-  
-    handleSizePerPage = ({
-      page,
-      onSizePerPageChange
-    }, newSizePerPage) => {
-      onSizePerPageChange(newSizePerPage, page);
-    }
-  
-    render() {
-      return (
-        <div>
-          <PaginationProvider
-            pagination={ paginationFactory(options) }
-          >
-            {
-              ({
-                paginationProps,
-                paginationTableProps
-              }) => (
-                <div>
-                  <div>
-                    <p>Current Page: { paginationProps.page }</p>
-                    <p>Current SizePerPage: { paginationProps.sizePerPage }</p>
-                  </div>
-                  <div className="btn-group" role="group">
-                    <button className="btn btn-primary" onClick={ this.handleNextPage(paginationProps) }>Next Page</button>
-                    <button className="btn btn-success" onClick={ this.handlePrevPage(paginationProps) }>Prev Page</button>
-                    <button className="btn btn-danger" onClick={ () => this.handleSizePerPage(paginationProps, 10) }>Size Per Page: 10</button>
-                    <button className="btn btn-warning" onClick={ () => this.handleSizePerPage(paginationProps, 25) }>Size Per Page: 25</button>
-                  </div>
-                  <BootstrapTable
-                    keyField="id"
-                    data={ products }
-                    columns={ columns }
-                    { ...paginationTableProps }
-                  />
-                </div>
-              )
-            }
-          </PaginationProvider>
-          <Code>{ sourceCode }</Code>
-        </div>
-      );
-    }
+    return (
+  <BootstrapTable
+        keyField='rowNumber'
+        data={ props.questions }
+        columns={ columns }
+        pagination={ paginationFactory() } />
+    )
   }
   
   export default function Questions(props) {
     let questions;
     if (props.questions.length > 0) 
-      questions = <FullyCustomPagination questions={props.questions} />
+      questions = <QuestionTable questions={props.questions} />
     else
       questions = <p>No questions found. <a href="/addQuestion">Add a new question</a></p>
   
