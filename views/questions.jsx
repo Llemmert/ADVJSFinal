@@ -6,13 +6,13 @@ import Layout from './layout';
 
 function QuestionTable(props){
 const columns = [{
-  dataField: question.qWording,
+  dataField: 'qWording',
   text: 'Question Wording'},
   {
-    dataField: question.answer,
+    dataField: 'answer',
     text: 'Answer'},
     {
-      dataField: question.roundType,
+      dataField: 'roundType',
       text: 'Round Type'
   }];
   let allQuestions = Number(props.questions.length)
