@@ -1,25 +1,48 @@
 import React from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import question from '../models/questions';
 import Layout from './layout';
 
+const columns = [{
+  dataField: question.qWording,
+  text: 'Question Wording'},
+  {
+    dataField: question.answer,
+    text: 'Answer'},
+    {
+      dataField: question.roundType,
+      text: 'Round Type'
+  }];
+  let allQuestions = Number(props.questions.length)
+
+  const options = {
+    paginationSize: 15,
+    pageStartIndex:0,
+    firstPageText: 'First',
+    prePageText: 'Back',
+    nextPageText: 'Next',
+    lastPageText: 'Last',
+    nextPageTitle: 'First page',
+    prePageTitle: 'Pre page',
+    firstPageTitle: 'Next page',
+    lastPageTitle: 'Last page',
+    sizePerPageList: [{
+      text: 'show 15', value: 15},
+      {
+        text: 'show 30', value: 30},
+        {
+          text: 'Show all', value: allQuestions
+        }]
+  };
+
 function QuestionTable(props){
     return (
-      <table>
-          <thead>
-              <tr>
-                <th>Question</th>
-                <th>Answer</th>
-                <th>Type</th>
-              </tr>
-          </thead>
-            {props.questions.map(question => (
-            <tbody><tr>
-                <td><strong>{question.qWording}</strong></td>
-                <td>{question.answer}</td>
-                <td>{question.roundType}</td>
-            </tr></tbody> 
-            ))}
-      </table>
+      <BootstrapTable
+        keyField='rowNumber'
+        data={ props.questions }
+        columns={ columns }
+        pagination={ paginationFactory(options) } />
     )
   }
   
