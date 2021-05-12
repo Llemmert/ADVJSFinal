@@ -10,35 +10,6 @@ const customTotal = (from, to, size) => (
     Showing { from } to { to } of { size } Results
   </span>
 );
-const pageButtonRenderer = ({
-  page,
-  active,
-  disable,
-  title,
-  onPageChange
-}) => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    onPageChange(page);
-  };
-  const activeStyle = {};
-  if (active) {
-    activeStyle.backgroundColor = 'black';
-    activeStyle.color = 'white';
-  } else {
-    activeStyle.backgroundColor = 'gray';
-    activeStyle.color = 'black';
-  }
-  if (typeof page === 'string') {
-    activeStyle.backgroundColor = 'white';
-    activeStyle.color = 'black';
-  }
-  return (
-    <li className="page-item">
-      <a href="#" onClick={ handleClick } style={ activeStyle }>{ page }</a>
-    </li>
-  );
-};
 const columns = [{
   dataField: 'qWording',
   text: 'Question Wording'},
@@ -52,7 +23,7 @@ const columns = [{
 
   const options = {
     paginationSize: 15,
-    pageStartIndex: 0,
+    pageStartIndex: 1,
     // alwaysShowAllBtns: true, // Always show next and previous button
     // withFirstAndLast: false, // Hide the going to First and Last page button
     // hideSizePerPage: true, // Hide the sizePerPage dropdown always
@@ -68,7 +39,6 @@ const columns = [{
     showTotal: true,
     paginationTotalRenderer: customTotal,
     disablePageTitle: true,
-    pageButtonRenderer,
     sizePerPageList: [{
       text: '15', value: 15
     }, {
