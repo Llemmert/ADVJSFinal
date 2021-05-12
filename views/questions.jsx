@@ -18,6 +18,7 @@ const columns = [{
   let allQuestions = Number(props.questions.length)
 
   const options = {
+    custom: true,
     paginationSize: 15,
     pageStartIndex: 1,
     firstPageText: 'First',
