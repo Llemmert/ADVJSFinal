@@ -38,7 +38,7 @@ const columns = [{
   };
     return (
   <BootstrapTable
-        keyField='_id'
+        keyField='rowNumber'
         data={ props.questions }
         columns={ columns }
         pagination={ paginationFactory() } />
