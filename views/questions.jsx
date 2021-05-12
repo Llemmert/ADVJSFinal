@@ -5,6 +5,12 @@ import question from '../models/questions';
 import Layout from './layout';
 
 function QuestionTable(props){
+const customTotal = (from, to, size) => (
+  <span className="react-bootstrap-table-pagination-total">
+    Showing { from } to { to } of { size } Results
+  </span>
+);
+
 const columns = [{
   dataField: 'qWording',
   text: 'Question Wording'},
@@ -15,12 +21,14 @@ const columns = [{
       dataField: 'roundType',
       text: 'Round Type'
   }];
-  let allQuestions = Number(props.questions.length)
 
   const options = {
-    custom: true,
     paginationSize: 15,
-    pageStartIndex: 1,
+    pageStartIndex: 0,
+    // alwaysShowAllBtns: true, // Always show next and previous button
+    // withFirstAndLast: false, // Hide the going to First and Last page button
+    // hideSizePerPage: true, // Hide the sizePerPage dropdown always
+    // hidePageListOnlyOnePage: true, // Hide the pagination list when only one page
     firstPageText: 'First',
     prePageText: 'Back',
     nextPageText: 'Next',
@@ -29,20 +37,23 @@ const columns = [{
     prePageTitle: 'Pre page',
     firstPageTitle: 'Next page',
     lastPageTitle: 'Last page',
+    showTotal: true,
+    paginationTotalRenderer: customTotal,
+    disablePageTitle: true,
     sizePerPageList: [{
-      text: 'show 15', value: 15
+      text: '15', value: 15
     }, {
-      text: 'show 30', value: 30
+      text: '25', value: 25
     }, {
-      text: 'Show all', value: allQuestions
-    }]
+      text: 'All', value: props.questions.length
+    }] // A numeric array is also available. the purpose of above example is custom the text
   };
     return (
   <BootstrapTable
         keyField='rowNumber'
         data={ props.questions }
         columns={ columns }
-        pagination={ paginationFactory() } />
+        pagination={ paginationFactory(options) } />
     )
   }
   
