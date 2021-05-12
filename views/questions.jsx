@@ -19,15 +19,11 @@ const columns = [{
 
   const options = {
     paginationSize: 15,
-    pageStartIndex:0,
+    pageStartIndex:1,
     firstPageText: 'First',
     prePageText: 'Back',
     nextPageText: 'Next',
     lastPageText: 'Last',
-    nextPageTitle: 'First page',
-    prePageTitle: 'Pre page',
-    firstPageTitle: 'Next page',
-    lastPageTitle: 'Last page',
     sizePerPageList: [{
       text: 'show 15', value: 15},
       {
