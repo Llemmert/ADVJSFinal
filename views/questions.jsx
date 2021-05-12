@@ -29,7 +29,7 @@ const columns = [{
     firstPageTitle: 'Next page',
     lastPageTitle: 'Last page',
     sizePerPageList: [{
-      text: 'Show all', value: allQuestions
+      text: 'Show 20', value: 20
     }]
   };
     return (
