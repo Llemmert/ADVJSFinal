@@ -18,7 +18,7 @@ const columns = [{
   let allQuestions = Number(props.questions.length)
 
   const options = {
-    paginationSize: 50,
+    paginationSize: 15,
     pageStartIndex: 0,
     firstPageText: 'First',
     prePageText: 'Back',
@@ -29,10 +29,6 @@ const columns = [{
     firstPageTitle: 'Next page',
     lastPageTitle: 'Last page',
     sizePerPageList: [{
-      text: 'show 15', value: 15
-    }, {
-      text: 'show 30', value: 30
-    }, {
       text: 'Show all', value: allQuestions
     }]
   };
