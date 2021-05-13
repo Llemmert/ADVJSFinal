@@ -19,7 +19,8 @@ router.post("/profile", function(req, res, next) {
     var update = {
         email: req.body.email,
         firstName: req.body.fname,
-        lastName: req.body.lname
+        lastName: req.body.lname,
+        userType: req.body.userType
     }
     var options = {}
     User.updateOne(conditions, update, options, (err, numAffected) => {
