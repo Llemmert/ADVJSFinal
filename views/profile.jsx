@@ -12,6 +12,7 @@ class Profile extends React.Component{
       email : props.user.email,
       firstName : props.user.firstName,
       lastName : props.user.lastName,
+      userType : props.user.userType,
     };
     // this is not working with static server-side rendering React
     //this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,6 +34,9 @@ class Profile extends React.Component{
           </label> <br />
           <label>Last Name:
             <input type="text" name="lname" required value={this.state.lastName} onChange={this.handleInputChange} />
+          </label><br /><br />
+          <label>User Type:
+            <input type="text" name="userType" required value={this.state.userType} onChange={this.handleInputChange} />
           </label><br /><br />
           <button type="submit">Update</button>
         </form>
