@@ -4,12 +4,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import question from '../models/questions';
 import Layout from './layout';
 
-class QuestionsPage extends React.Component{
-  constructor(props){
-    super(props)
-  }
-
-QuestionTable(props){
+function QuestionTable(props){
 const customTotal = (from, to, size) => (
   <span className="react-bootstrap-table-pagination-total">
     Showing { from } to { to } of { size } Results
@@ -61,8 +56,8 @@ const columns = [{
         pagination={ paginationFactory(options) } />
     )
   }
-
-  Questions(props) {
+  
+  export default function Questions(props) {
     let questions;
     if (props.questions.length > 0) 
       questions = <QuestionTable questions={props.questions} />
@@ -78,5 +73,4 @@ const columns = [{
       </Layout>
     );
   }
-}
-export default function Questions(props);
+  
