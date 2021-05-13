@@ -47,9 +47,6 @@ const columns = [{
       text: 'All', value: props.questions.length
     }] // A numeric array is also available. the purpose of above example is custom the text
   };
-  $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
     return (
       
   <BootstrapTable
