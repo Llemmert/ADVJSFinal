@@ -2,58 +2,25 @@ import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import question from '../models/questions';
+import { MDBDataTableV5 } from 'mdbreact';
 import Layout from './layout';
 
 function QuestionTable(props){
-const customTotal = (from, to, size) => (
-  <span className="react-bootstrap-table-pagination-total">
-    Showing { from } to { to } of { size } Results
-  </span>
-);
-const columns = [{
-  dataField: 'qWording',
-  text: 'Question Wording'},
+const [datatable, setDatatable] = React.useState({
+  columns: [{
+  field: 'qWording',
+  label: 'Question Wording'},
   {
-    dataField: 'answer',
-    text: 'Answer'},
+    field: 'answer',
+    label: 'Answer'},
     {
-      dataField: 'roundType',
-      text: 'Round Type'
-  }];
-
-  const options = {
-    paginationSize: 15,
-    pageStartIndex: 1,
-    // alwaysShowAllBtns: true, // Always show next and previous button
-    // withFirstAndLast: false, // Hide the going to First and Last page button
-    // hideSizePerPage: true, // Hide the sizePerPage dropdown always
-    // hidePageListOnlyOnePage: true, // Hide the pagination list when only one page
-    firstPageText: 'First',
-    prePageText: 'Back',
-    nextPageText: 'Next',
-    lastPageText: 'Last',
-    nextPageTitle: 'First page',
-    prePageTitle: 'Pre page',
-    firstPageTitle: 'Next page',
-    lastPageTitle: 'Last page',
-    showTotal: true,
-    paginationTotalRenderer: customTotal,
-    disablePageTitle: true,
-    sizePerPageList: [{
-      text: '15', value: 15
-    }, {
-      text: '25', value: 25
-    }, {
-      text: 'All', value: props.questions.length
-    }] // A numeric array is also available. the purpose of above example is custom the text
-  };
+      field: 'roundType',
+      label: 'Round Type'
+  }]
+})
     return (
       
-  <BootstrapTable
-        keyField='_id'
-        data={ props.questions }
-        columns={ columns }
-        pagination={ paginationFactory(options) } />
+      <MDBDataTableV5 hover entriesOptions={[5,20,25]} entries={5} pagesAmount={4} data={props.questions} />
     )
   }
   
