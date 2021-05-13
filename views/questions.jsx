@@ -61,8 +61,8 @@ const columns = [{
         pagination={ paginationFactory(options) } />
     )
   }
-}
-  export default function Questions(props) {
+
+  Questions(props) {
     let questions;
     if (props.questions.length > 0) 
       questions = <QuestionTable questions={props.questions} />
@@ -78,3 +78,5 @@ const columns = [{
       </Layout>
     );
   }
+}
+export default function Questions(props);
