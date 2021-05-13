@@ -28,10 +28,10 @@ class Profile extends React.Component{
         <form method="POST" onSubmit={this.handleSubmit}>
           <label>Email: 
             <input type="text" name="email" required value={this.state.email} onChange={this.handleInputChange} /> 
-          </label><br />
+          </label><br /><br/>
           <label>First Name: 
             <input type="text" name="fname" required value={this.state.firstName} onChange={this.handleInputChange} />
-          </label> <br />
+          </label> <br /><br/>
           <label>Last Name:
             <input type="text" name="lname" required value={this.state.lastName} onChange={this.handleInputChange} />
           </label><br /><br />
@@ -66,7 +66,8 @@ class Profile extends React.Component{
       body: JSON.stringify({
         email: this.state.email,
         fname: this.state.firstName,
-        lname: this.state.lastName
+        lname: this.state.lastName,
+        userType: this.state.userType
       }),
     })
     .then(result => result.json())
@@ -76,6 +77,7 @@ class Profile extends React.Component{
         email: json.email,
         firstName: json.firstName,
         lastName: json.lastName,
+        userType: json.userType,
       });
     })
   }
