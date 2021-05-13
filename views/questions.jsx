@@ -5,7 +5,7 @@ import question from '../models/questions';
 import Layout from './layout';
 
 class QuestionsPage extends React.Component{
-  constructor(propr){
+  constructor(props){
     super(props)
   }
 
