@@ -14,7 +14,9 @@ function Dashboard(props) {
   }
   else {
     return (
+      
       <Layout title={props.title}>
+        {props.message ? <Message messages={props.message} /> : null}
         <h1>{props.title}</h1>
         <h2>Quiz Ninjas Sample Questions</h2>
         <h3>Welcome, {props.user.firstName}</h3>

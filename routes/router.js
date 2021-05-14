@@ -153,8 +153,15 @@ router.post(
 )
 
 router.get("/addQuestion", function (req, res, next) {
-  res.render("addQuestion", { title: "Add a Question to the Quiz" })
-})
+  let user = userLoggedIn(req, res)
+  if(user.userType == "Quiz Master"){
+  res.render("addQuestion", { 
+    title: "Add a Question to the Quiz"
+  })}
+  else {
+    let message = "You do not have permission to add a question."
+    res.redirect('/dashboard/?message='+message)
+}
 
 router.post(
   "/addQuestion",
@@ -180,7 +187,6 @@ router.post(
   function (req, res) {
     // check authentication
     var user = userLoggedIn(req, res)
-    var userType = userLoggedInType(req, res)
     // extract the validation errors from a request
     const errors = validationResult(req)
     // check if there are errors
