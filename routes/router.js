@@ -162,7 +162,7 @@ router.get("/addQuestion", function (req, res, next) {
     let message = "You do not have permission to add a question."
     res.redirect('/dashboard/?message='+message)
 }
-}
+})
 
 router.post(
   "/addQuestion",
