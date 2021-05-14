@@ -105,6 +105,9 @@ router.post(
       .trim()
       .exists()
       .custom((value, { req }) => value === req.body.password),
+    check("userType", "User Type must not be empty.")
+      .trim()
+      .isLength({min: 3}),
     // Sanitize all fields.
     sanitizeBody("*")
       .trim()
@@ -130,7 +133,8 @@ router.post(
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10)
+        password: bcrypt.hashSync(req.body.password, 10),
+        userType: req.body.userType
       })
       //console.log(user)
       user.save(err => {

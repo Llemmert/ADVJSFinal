@@ -23,7 +23,10 @@ function Register(props) {
         <label>
           <input type="password" name="password1" required placeholder="Re-enter password" />
         </label>
-        <br /> <br />
+        <br />
+        <label>
+          <input type="text" name="userType" required placeholder="User Type" />
+        </label><br /><br />
         <button type="submit">Sign up</button>
         <br /> <br />
         <h2>Already have an account? <a href="/login">Log in</a></h2>
