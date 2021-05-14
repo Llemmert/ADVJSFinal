@@ -21,6 +21,11 @@ function userLoggedIn(req, res) {
   if (user) return user
   res.redirect("/login")
 }
+function userLoggedInType(req, res) {
+  let userType = req.session.user.userType
+  if (userType == "Quiz Master") return userType
+  res.redirect("/dashboard")
+}
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -171,6 +176,7 @@ router.post(
   function (req, res) {
     // check authentication
     var user = userLoggedIn(req, res)
+    var userType = userLoggedInType(req, res)
     // extract the validation errors from a request
     const errors = validationResult(req)
     // check if there are errors
