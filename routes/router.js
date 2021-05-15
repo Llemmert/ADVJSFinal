@@ -35,11 +35,10 @@ router.get("/", function (req, res, next) {
 // authenticated page; check if session exists
 router.get("/dashboard", (req, res, next) => {
   const message = req.query.message;
-  console.log(message);
   let user = userLoggedIn(req, res)
     res.render("dashboard", {
       title: "Quiz Ninjas Dashboard",
-      user,
+      user: user,
       message
   })
 })

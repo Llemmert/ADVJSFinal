@@ -25,7 +25,12 @@ function Register(props) {
         </label>
         <br />
         <label>
-          <input type="text" name="userType" required placeholder="User Type" />
+          User Type:
+          <select type="text" name="userType" required placeholder="User Type">
+            <option value="Quiz Master">Quiz Master</option>
+            <option value="Quiz Host">Quiz Host</option>
+            <option selected value="Quiz Taker">Quiz Taker</option>
+          </select>
         </label><br /><br />
         <button type="submit">Sign up</button>
         <br /> <br />

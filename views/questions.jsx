@@ -20,9 +20,9 @@ const columns = [{
       dataField: 'roundType',
       text: 'Round Type'
   }];
-
+const totalQuestions = props.questions.length;
   const options = {
-    paginationSize: 15,
+    paginationSize: totalQuestions,
     pageStartIndex: 1,
     // alwaysShowAllBtns: true, // Always show next and previous button
     // withFirstAndLast: false, // Hide the going to First and Last page button
@@ -40,11 +40,7 @@ const columns = [{
     paginationTotalRenderer: customTotal,
     disablePageTitle: true,
     sizePerPageList: [{
-      text: '15', value: 15
-    }, {
-      text: '25', value: 25
-    }, {
-      text: 'All', value: props.questions.length
+      text: 'All', value: totalQuestions
     }] // A numeric array is also available. the purpose of above example is custom the text
   };
     return (
