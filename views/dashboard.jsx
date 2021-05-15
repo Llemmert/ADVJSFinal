@@ -6,14 +6,17 @@ function Dashboard(props) {
     return (
       <Layout title={props.title}>
         <Message message={[{msg: props.message}]}/>
+        <span>
+          {props}
+        </span>
         <h2> {props.message} </h2>
         <h2>Quiz Ninjas Sample Questions</h2>
         <h3>Welcome, {props.user.firstName}</h3>
         <a href="/courses/">Courses</a> |
         <a href="/users/profile">Profile</a> |
         <a href="/logout">Log out</a> |
-        {props.userType=="Quiz Master" ? <a href="/addQuestion">Add Question</a> : null}
-        | <a href="/questions">Questions</a>
+        {props.userType==="Quiz Master" ? <span><a href="/addQuestion">Add Question</a> | </span>: null}
+        <a href="/questions">Questions</a>
       </Layout>
     );
 }
