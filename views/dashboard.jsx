@@ -5,9 +5,6 @@ import Message from './components/message';
 function Dashboard(props) {
     return (
       <Layout title={props.title}>
-        <span>
-          {props}
-        </span>
         <Message message={[{msg: props.message}]}/>
         <h2> {props.message} </h2>
         <h2>Quiz Ninjas Sample Questions</h2>
@@ -15,7 +12,7 @@ function Dashboard(props) {
         <a href="/courses/">Courses</a> |
         <a href="/users/profile">Profile</a> |
         <a href="/logout">Log out</a> |
-        {props.userType="Quiz Master" ? <a href="/addQuestion">Add Question</a> : null}
+        {props.userType=="Quiz Master" ? <a href="/addQuestion">Add Question</a> : null}
         | <a href="/questions">Questions</a>
       </Layout>
     );
