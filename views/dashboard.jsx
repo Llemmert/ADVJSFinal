@@ -12,7 +12,7 @@ function Dashboard(props) {
         <a href="/users/profile">Profile</a> |
         <a href="/logout">Log out</a> |
         {props.userType="Quiz Master" ? <a href="/addQuestion">Add Question</a> : null}
-        <a href="/questions">Questions</a>
+        | <a href="/questions">Questions</a>
       </Layout>
     );
 }
