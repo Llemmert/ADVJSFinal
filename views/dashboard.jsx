@@ -6,7 +6,7 @@ function Dashboard(props) {
     return (
       <Layout title={props.title}>
         <h1>{props.title}</h1>
-        {props.message ? <Message messages={props.message} /> : null}
+        <h2> {props.message} </h2>
         <h2>Quiz Ninjas Sample Questions</h2>
         <h3>Welcome, {props.user.firstName}</h3>
         <a href="/courses/">Courses</a> |
