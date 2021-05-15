@@ -5,7 +5,7 @@ import Message from './components/message';
 function Dashboard(props) {
     return (
       <Layout title={props.title}>
-        <h1>{props.title}</h1>
+        <Message message={[props.message]}/>
         <h2> {props.message} </h2>
         <h2>Quiz Ninjas Sample Questions</h2>
         <h3>Welcome, {props.user.firstName}</h3>
