@@ -9,10 +9,9 @@ function Dashboard(props) {
         <h2> {props.message} </h2>
         <h2>Quiz Ninjas Sample Questions</h2>
         <h3>Welcome, {props.user.firstName}</h3>
-        <a href="/courses/">Courses</a> |
         <a href="/users/profile">Profile</a> |
-        <a href="/logout">Log out</a> |
-        {props.user.userType==="Quiz Master"? <span><a href="/addQuestion">Add Question</a> | </span> : null}
+        <a href="/logout">Log out</a> | 
+        {props.user.userType==="Quiz Master"? <span><a href="/addQuestion">Add Question</a> |</span> : null}
         <a href="/questions">Questions</a>
       </Layout>
     );

@@ -23,7 +23,7 @@ class Profile extends React.Component{
     return (
       <Layout title={this.state.title}>
         <h1>{this.state.title}</h1>
-        <h3>Welcome, {this.state.email} | <a href="/dashboard/">Dashboard</a> | <a href="/logout">Log Out</a></h3>
+        <h3>Welcome, {this.state.firstName} | <a href="/dashboard/">Dashboard</a> | <a href="/logout">Log Out</a></h3>
         <Message messages={this.state.messages} />
         <form method="POST" onSubmit={this.handleSubmit}>
           <label>Email: 

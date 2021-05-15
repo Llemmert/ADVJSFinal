@@ -13,21 +13,25 @@ const customTotal = (from, to, size) => (
 
 var columns;
 if(props.user.userType==="Quiz Taker"){
-  columns = [{
-    dataField: 'qWording',
-    text: 'Question Wording'},
-      {
+  columns = [
+    {
+      dataField: 'qWording',
+      text: 'Question Wording'
+    },
+    {
         dataField: 'roundType',
         text: 'Round Type'
     }];
 }
 else{
-  columns = [{
-  dataField: 'qWording',
-  text: 'Question Wording'},
-  {
-    dataField: 'answer',
-    text: 'Answer'},
+  columns = [
+    {
+      dataField: 'qWording',
+      text: 'Question Wording'
+    },
+    {
+      dataField: 'answer',
+      text: 'Answer'},
     {
       dataField: 'roundType',
       text: 'Round Type'
@@ -80,8 +84,8 @@ const totalQuestions = props.questions.length;
         <h1>{props.title}</h1>
         <a href="/dashboard/">Dashboard</a> | 
         <a href="/users/profile">Profile</a> | 
-        <a href="/logout">Log out</a> | 
-        {props.user.userType==="Quiz Master"? <span><a href="/addQuestion">Add Question</a> | </span> : null}
+        <a href="/logout">Log out</a>  
+        {props.user.userType==="Quiz Master"? <span> |<a href="/addQuestion">Add Question</a></span> : null}
         <h3>All Questions</h3>
         {questions}
       </Layout>

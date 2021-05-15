@@ -21,11 +21,6 @@ function userLoggedIn(req, res) {
   if (user) return user
   res.redirect("/login")
 }
-function userLoggedInType(req, res) {
-  let userType = req.session.user.userType
-  if (userType == "Quiz Master") return userType
-  res.redirect("/dashboard")
-}
 
 /* GET home page. */
 router.get("/", function (req, res, next) {

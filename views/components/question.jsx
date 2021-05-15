@@ -16,10 +16,10 @@ function Question(props) {
           <input type="text" name="qWording" required placeholder="Question Wording" value={(props.question)? props.question.qWording : null } />
         </label><br />
         <label>
-          <input type="text" name="answer" required placeholder="Answer" value={(props.question)?props.question.answer:null}/>
+          <input type="text" name="answer" required placeholder="Answer" value={(props.question)? props.question.answer : null}/>
         </label><br />
         <label>
-          <input type="text" name="qType" required placeholder="Question Type" value={(props.question)?props.question.roundType:null}/>
+          <input type="text" name="qType" required placeholder="Question Type" value={(props.question)? props.question.roundType : null}/>
         </label><br />
         <br /> <br />
         <button type="submit">Save</button>
