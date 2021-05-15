@@ -35,9 +35,14 @@ class Profile extends React.Component{
           <label>Last Name:
             <input type="text" name="lname" required value={this.state.lastName} onChange={this.handleInputChange} />
           </label><br /><br />
-          <label>User Type:
-            <input type="text" name="userType" required value={this.state.userType} onChange={this.handleInputChange} />
-          </label><br /><br />
+          <label>
+          User Type:
+          <select type="text" name="userType" required placeholder="User Type">
+            <option value="Quiz Master">Quiz Master</option>
+            <option value="Quiz Host">Quiz Host</option>
+            <option value="Quiz Taker">Quiz Taker</option>
+          </select>
+        </label><br /><br />
           <button type="submit">Update</button>
         </form>
       </Layout>

@@ -10,7 +10,19 @@ const customTotal = (from, to, size) => (
     Showing { from } to { to } of { size } Results
   </span>
 );
-const columns = [{
+
+var columns;
+if(props.user.userType==="Quiz Taker"){
+  columns = [{
+    dataField: 'qWording',
+    text: 'Question Wording'},
+      {
+        dataField: 'roundType',
+        text: 'Round Type'
+    }];
+}
+else{
+  columns = [{
   dataField: 'qWording',
   text: 'Question Wording'},
   {
@@ -20,6 +32,7 @@ const columns = [{
       dataField: 'roundType',
       text: 'Round Type'
   }];
+}
 const totalQuestions = props.questions.length;
   const options = {
     paginationSize: totalQuestions,
@@ -56,14 +69,19 @@ const totalQuestions = props.questions.length;
   export default function Questions(props) {
     let questions;
     if (props.questions.length > 0) 
-      questions = <QuestionTable questions={props.questions} />
+      questions = <QuestionTable 
+        questions={props.questions} 
+        user={props.user}/>
     else
       questions = <p>No questions found. <a href="/addQuestion">Add a new question</a></p>
   
     return (
       <Layout title={props.title}>
         <h1>{props.title}</h1>
-        <a href="/dashboard/">Dashboard</a> | <a href="/users/profile">Profile</a> | <a href="/course/">New Course</a> | <a href="/logout">Log out</a> | <a href="/addQuestion">New Question</a>
+        <a href="/dashboard/">Dashboard</a> | 
+        <a href="/users/profile">Profile</a> | 
+        <a href="/logout">Log out</a> | 
+        {props.user.userType==="Quiz Master"? <span><a href="/addQuestion">Add Question</a> | </span> : null}
         <h3>All Questions</h3>
         {questions}
       </Layout>

@@ -156,7 +156,7 @@ router.post(
 
 router.get("/addQuestion", function (req, res, next) {
   let user = userLoggedIn(req, res)
-  if(user.userType == "Quiz Master"){
+  if(user.userType === "Quiz Master"){
   res.render("addQuestion", { 
     title: "Add a Question to the Quiz"
   })}
@@ -227,8 +227,10 @@ router.get("/questions", function (req, res, next) {
   Question.find({}, (err, questions) => {
     if (err) throw err;
     //console.log(courses)
+    let user = userLoggedIn(req, res)
     res.render("questions", {
       title: "All Questions",
+      user: user,
       questions: questions,
       errors: []
     })
