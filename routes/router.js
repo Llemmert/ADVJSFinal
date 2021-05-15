@@ -34,10 +34,13 @@ router.get("/", function (req, res, next) {
 
 // authenticated page; check if session exists
 router.get("/dashboard", (req, res, next) => {
+  const message = req.query.message;
+  console.log(message);
   let user = userLoggedIn(req, res)
     res.render("dashboard", {
       title: "Quiz Ninjas Dashboard",
-      user: user,
+      user,
+      message
   })
 })
 
@@ -160,7 +163,7 @@ router.get("/addQuestion", function (req, res, next) {
   })}
   else {
     let message = "You do not have permission to add a question."
-    res.redirect('/dashboard/?message='+message)
+    res.redirect(`/dashboard/?message=${message}`)
 }
 })
 
