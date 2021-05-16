@@ -53,6 +53,7 @@ class Profile extends React.Component{
           <label>
           User Type:
           <select type="text" name="userType" required placeholder="User Type">
+          <option value="Quiz Taker" selected hidden>Select a User Type</option>
             <option value="Quiz Master">Quiz Master</option>
             <option value="Quiz Host">Quiz Host</option>
             <option value="Quiz Taker">Quiz Taker</option>

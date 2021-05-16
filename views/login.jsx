@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from './layout';
 import Message from './components/message'
 
-
 function Login(props) {
   return (
     <Layout title={props.title}>

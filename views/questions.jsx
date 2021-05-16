@@ -2,6 +2,7 @@ import React from 'react';
 import question from '../models/questions';
 import Layout from './layout';
 
+
 function QuestionTable(props){
   return (
     <table class="table table-hover table-dark">

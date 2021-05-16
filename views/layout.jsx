@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-
+import Title from './components/Title'
 function Layout(props) {
   return (
     <html>
+      <Title />
       <head>
         <title>{props.title}</title>
         <link rel="stylesheet" href="/stylesheets/style.css" />
