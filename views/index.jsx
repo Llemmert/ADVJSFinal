@@ -5,7 +5,11 @@ function Index(props) {
   return (
     <Layout title={props.title}>
       <h1>{props.title}</h1>
-      <a href="/login">Log in</a>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+      <a class="nav-link active" href="/login">Log in</a>
+      </li>
+      </ul>
     </Layout>
   );
 }

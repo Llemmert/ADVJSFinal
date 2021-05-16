@@ -23,7 +23,22 @@ class Profile extends React.Component{
     return (
       <Layout title={this.state.title}>
         <h1>{this.state.title}</h1>
-        <h3>Welcome, {this.state.firstName} | <a href="/dashboard/">Dashboard</a> | <a href="/logout">Log Out</a></h3>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/users/profile">Profile</a>
+          </li> 
+        {this.state.userType==="Quiz Master"? <li class="nav-item"><a class="nav-link" href="/addQuestion">Add Question</a> </li> : null}
+        <li class="nav-item">
+        <a class="nav-link" href="/questions">Questions</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>  
+          </li>
+        </ul>
+        <br/>
         <Message messages={this.state.messages} />
         <form method="POST" onSubmit={this.handleSubmit}>
           <label>Email: 

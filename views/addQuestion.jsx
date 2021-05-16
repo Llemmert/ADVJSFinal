@@ -7,7 +7,23 @@ function AddQuestion(props) {
     <Layout title={props.title}>
       <h1>{props.title}</h1>
       <Message messages={props.errors} />
-      <a href="/dashboard/">Dashboard</a> | <a href="/users/profile">Profile</a> | <a href="/logout">Log out</a> | <a href="/questions">Questions</a>
+      <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/profile">Profile</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link active" href="/addQuestion">Add Question</a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/questions">Questions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>  
+          </li>
+        </ul>
       <form method="POST" action="/addQuestion">
         <label>
           <input type="text" name="qWording" required placeholder="Question Wording" />
