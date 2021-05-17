@@ -32,6 +32,7 @@ Site is deployed on Heroku on the following link: http://advjsfinal.herokuapp.co
 Accounts can change their own account type to test features
 
 ## Testing Screenshots
+![image](https://user-images.githubusercontent.com/77998718/118460180-aea22900-b6b9-11eb-9ef3-1002304c596f.png)
 
 
 
