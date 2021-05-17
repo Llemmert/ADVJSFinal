@@ -10,7 +10,6 @@ const { sanitizeBody } = require("express-validator/filter")
 
 // import models
 var User = require("../models/user")
-var Course = require("../models/course")
 var Question = require("../models/questions")
 const { MongoError } = require("mongodb")
 
@@ -213,7 +212,7 @@ router.post(
         res.redirect('/addQuestion')
       })
       // successful - redirect to dashboard
-      //res.redirect("/courses")
+      //res.redirect("/addQuestion")
     }
   }
 )
@@ -233,7 +232,7 @@ router.post("/deletequestion", function (req, res, next) {
 router.get("/questions", function (req, res, next) {
   Question.find({}, (err, questions) => {
     if (err) throw err;
-    //console.log(courses)
+    //console.log(question)
     let user = userLoggedIn(req, res)
     res.render("questions", {
       title: "All Questions",
@@ -260,7 +259,7 @@ router.get("/question/:id?", function (req, res, next) {
   } else {
     res.render("./components/question", {
       title: "Add a new question",
-      course: null,
+      question: null,
       errors: []
     })
   }
@@ -306,7 +305,7 @@ router.post(
         answer: req.body.answer,
         roundType: req.body.roundType,
       }
-      // check if the form data is for update or new course
+      // check if the form data is for update or new question
       var id = req.params.id
       if (id) {
         // update
@@ -318,7 +317,7 @@ router.post(
         }
         res.render("./components/question", context)
       }
-      // add new course
+      // add new question
       else {
         addQuestion(res, question).then((errors) => {
           console.log('Errors: ', errors)
@@ -335,7 +334,7 @@ router.post(
         })
       }
       // successful - redirect to dashboard
-      //res.redirect("/courses")
+      //res.redirect("/questions")
     }
   }
 )
@@ -383,153 +382,6 @@ router.post("/profile", function (req, res, next) {
   })
 })
 
-router.get("/courses", function (req, res, next) {
-  // get logged in user
-  let user = userLoggedIn(req, res)
-  Course.find({user_id: user._id}, (err, courses) => {
-    if (err) throw err;
-    //console.log(courses)
-    res.render("courses", {
-      title: "All courses",
-      courses: courses,
-      errors: []
-    })
-  });
-})
-
-// Individual course page...
-// *? optional request parameter
-router.get("/course/:id?", function (req, res, next) {
-  // get logged in user
-  var user = userLoggedIn(req, res)
-  var courseID = req.params.id
-  if (courseID) {
-    console.log(`courseID: ${courseID}`)
-    var course = Course.findOne({ _id: courseID }, function (err, course) {
-      res.render("./components/course", {
-        title: "Update existing course",
-        course: course,
-        errors: []
-      })
-    })
-  } else {
-    res.render("./components/course", {
-      title: "Add a new course",
-      course: null,
-      errors: []
-    })
-  }
-})
-
-// either add new or update existing course
-// optional course_id
-router.post(
-  "/course/:id?",
-  [
-    // Validate fields.
-    check("name", "Short name must not be empty.")
-      .trim()
-      .isLength({ min: 1 }),
-    check("fullName", "Full name must not be empty.")
-      .trim()
-      .isLength({ min: 1 }),
-    check("crn", "CRN must not be empty.")
-      .trim()
-      .isLength({ min: 1 }),
-    // email must be valid
-    check("section", "Section must not be empty.")
-      .isLength({ min: 1 })
-      .trim(),
-    // Sanitize fields.
-    sanitizeBody("*")
-      .trim()
-      .escape()
-  ],
-  function (req, res) {
-    // check authentication
-    var user = userLoggedIn(req, res)
-    // extract the validation errors from a request
-    const errors = validationResult(req)
-    // check if there are errors
-    if (!errors.isEmpty()) {
-      let context = {
-        title: "Add a new course",
-        errors: errors.array()
-      }
-      res.render("./components/course", context)
-    } else {
-      // create a user document and insert into mongodb collection
-      let course = {
-        name: req.body.name,
-        fullName: req.body.fullName,
-        crn: req.body.crn,
-        section: req.body.section,
-        user_id: user._id
-      }
-      // check if data is there on console
-      console.log(course)
-      // check if the form data is for update or new course
-      var id = req.params.id
-      if (id) {
-        // update
-        updateCourse(res, id, course)
-        let context = {
-          title: "Update course",
-          errors: [{msg: "Course updated successfully!"}],
-          course: course
-        }
-        res.render("./components/course", context)
-      }
-      // add new course
-      else {
-        addCourse(res, course).then((errors) => {
-          console.log('Errors: ', errors)
-          if (errors && errors.length !== 0) {
-            let context = {
-              title: "Add a new course",
-              errors: errors
-            }
-            res.render("./components/course", context)
-          }
-          else {
-            res.redirect("/courses")
-          }
-        })
-      }
-      // successful - redirect to dashboard
-      //res.redirect("/courses")
-    }
-  }
-)
-
-function updateCourse(res, id, course) {
-  var condition = { _id: id }
-  var option = {}
-  var update = {}
-  Course.updateOne(condition, course, option, (err, rowsAffected) => {
-    if (err) {
-      console.log(`caught the error: ${err}`)
-      return res.status(500).json(err);
-    }
-  })
-}
-
-async function addCourse(res, course) {
-  var c = new Course(course)
-  try {
-    await c.save();
-  }
-  catch(e) {
-    if (e instanceof MongoError) {
-      console.log(`Exception: ${e.message}`)
-      if (e.message.includes('duplicate key error'))
-        return [{msg: "Duplicate CRN not allowed"}]
-      else return []
-    }
-    else throw e;
-  }
-}
-
 function updateQuestion(res, id, question) {
   var condition = { _id: id }
   var option = {}
@@ -557,27 +409,5 @@ async function addQuestion(res, question) {
     else throw e;
   }
 }
-
-// either add new or update existing course
-router.post("/deletecourse", function (req, res, next) {
-  // create a user document and insert into mongodb collection
-  console.log(req.body)
-  let query = {
-    id: req.body.courseID
-  }
-  // check if data is there on console
-  console.log(query)
-  Course.deleteOne(query, function (err) {
-    if (err) throw err
-    else {
-      console.log(`Deleted course id: ${query}`)
-      res.redirect("/grade")
-    }
-  })
-})
-
-router.get("/addstudent", function (req, res, next) {
-  res.send("FIXME...")
-})
 
 module.exports = router
