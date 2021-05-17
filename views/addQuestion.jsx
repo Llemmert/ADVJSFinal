@@ -5,7 +5,7 @@ import Message from './components/message';
 function AddQuestion(props) {
   return (
     <Layout title={props.title}>
-      <div class="container-fluid">
+      <div class="container-fluid" style={{height:"100%", minHeight:"100%"}}>
       <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link" href="/dashboard/">Dashboard</a>
