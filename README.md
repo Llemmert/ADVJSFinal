@@ -1,5 +1,6 @@
 # Quiz Ninjas
 ## Link to site: http://advjsfinal.herokuapp.com/
+## Link to Repo: https://github.com/Llemmert/ADVJSFinal
 
 - Quiz Ninjas is a trivia question database website.
 - Users can create accounts and access a database of trivia questions.
