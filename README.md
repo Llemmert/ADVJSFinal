@@ -7,22 +7,21 @@
 
 There are three main user types:
 
--- Quiz Master: Has access to:
--- Questions
--- Answers
--- Adding Questions
--- Deleting Questions
--- Editing Questions
+- Quiz Master: Has access to:
+- Questions
+- Answers
+- Adding Questions
+- Deleting Questions
+- Editing Questions
 
 
 - Quiz Host: Has access to:
--- Questions
--- Answers
+- Questions
+- Answers
 
+- Quiz Taker: Has access to:
+- Questions
 
-Quiz Taker: Has access to:
-Questions
-```
 ## Deliverables
 - Has user signup functionality
 - Has authentication service for users to log in
