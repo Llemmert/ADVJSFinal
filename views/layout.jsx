@@ -7,7 +7,7 @@ function Layout(props) {
   return (
     <html>
       <Title />
-      <div class="container-fluid" style={{paddingBottom:"70px", paddingTop:"12vh"}}>
+      <div class="container-fluid" style={{paddingBottom:"100px", paddingTop:"15vh"}}>
       <head>
         <title>{props.title}</title>
         <link rel="stylesheet" href="/stylesheets/style.css" />
