@@ -3,8 +3,8 @@
 - Quiz Ninjas is a trivia question database website.
 - Users can create accounts and access a database of trivia questions.
 
-## Link to site: http://advjsfinal.herokuapp.com/
-## Link to Repo: https://github.com/Llemmert/ADVJSFinal
+### Link to site: http://advjsfinal.herokuapp.com/
+### Link to Repo: https://github.com/Llemmert/ADVJSFinal
 
 ## Features
 
