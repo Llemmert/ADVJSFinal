@@ -22,6 +22,7 @@ class Profile extends React.Component{
   render() {
     return (
       <Layout title={this.state.title}>
+        <div class="container-fluid">
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link" href="/dashboard/">Dashboard</a>
@@ -60,6 +61,7 @@ class Profile extends React.Component{
         </label><br /><br />
           <button type="submit" class="btn btn-dark">Update</button>
         </form>
+      </div>
       </Layout>
     );
   }

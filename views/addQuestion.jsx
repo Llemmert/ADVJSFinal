@@ -5,7 +5,7 @@ import Message from './components/message';
 function AddQuestion(props) {
   return (
     <Layout title={props.title}>
-      
+      <div class="container-fluid">
       <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link" href="/dashboard/">Dashboard</a>
@@ -39,6 +39,7 @@ function AddQuestion(props) {
         <button type="submit" class="btn btn-dark">Add Question</button>
         <br /> <br />
         </form>
+      </div>
     </Layout>
   );
 }

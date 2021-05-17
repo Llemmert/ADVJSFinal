@@ -42,6 +42,7 @@ function QuestionTable(props){
   
     return (
       <Layout title={props.title}>
+        <div class="container-fluid">
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link" href="/dashboard/">Dashboard</a>
@@ -59,6 +60,7 @@ function QuestionTable(props){
         </ul>
         <h1>{props.title}</h1>
         {questions}
+      </div>
       </Layout>
     );
   }

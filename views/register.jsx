@@ -5,6 +5,7 @@ import Message from './components/message';
 function Register(props) {
   return (
     <Layout title={props.title}>
+      <div class="container-fluid">
       <h1>{props.title}</h1>
       <Message messages={props.errors} />
       <form method="POST" action="/register">
@@ -36,6 +37,7 @@ function Register(props) {
         <br /> <br />
         <h2>Already have an account? <a href="/login">Log in</a></h2>
       </form>
+      </div>
     </Layout>
   );
 }
