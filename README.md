@@ -6,7 +6,7 @@
 
 ## Features
 
-There are three main user types:
+There are three main user types with different features:
 
 ### Quiz Master: Has access to:
 - Questions
