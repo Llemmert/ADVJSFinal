@@ -1,6 +1,7 @@
 # Quiz Ninjas
 
-Quiz Ninjas is a trivia question database website. Users can create accounts and access a database of trivia questions.
+-Quiz Ninjas is a trivia question database website.
+-Users can create accounts and access a database of trivia questions.
 
 ## Features
 
@@ -23,13 +24,13 @@ Quiz Taker: Has access to:
 Questions
 ```
 ## Deliverables
-Has user signup functionality
-Has authentication service for users to log in
-User info is stored in MongoDB
-Questions are stored in MongoDB
-Used Bootstrap for most CSS
-Site is deployed on Heroku on the following link: http://advjsfinal.herokuapp.com/
-Accounts can change their own account type to test features
+-Has user signup functionality
+-Has authentication service for users to log in
+-User info is stored in MongoDB
+-Questions are stored in MongoDB
+-Used Bootstrap for most CSS
+-Site is deployed on Heroku on the following link: http://advjsfinal.herokuapp.com/
+-Accounts can change their own account type to test features
 
 ## Testing Screenshots
 ## Login Screen:
