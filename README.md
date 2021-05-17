@@ -6,20 +6,20 @@
 ## Features
 
 There are three main user types:
-```
-Quiz Master: Has access to:
-Questions
-Answers
-Adding Questions
-Deleting Questions
-Editing Questions
-```
-```
-Quiz Host: Has access to:
-Questions
-Answers
-```
-```
+
+-- Quiz Master: Has access to:
+-- Questions
+-- Answers
+-- Adding Questions
+-- Deleting Questions
+-- Editing Questions
+
+
+- Quiz Host: Has access to:
+-- Questions
+-- Answers
+
+
 Quiz Taker: Has access to:
 Questions
 ```
