@@ -22,7 +22,6 @@ class Profile extends React.Component{
   render() {
     return (
       <Layout title={this.state.title}>
-        <h1>{this.state.title}</h1>
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link" href="/dashboard/">Dashboard</a>
@@ -38,28 +37,28 @@ class Profile extends React.Component{
             <a class="nav-link" href="/logout">Log out</a>  
           </li>
         </ul>
-        <br/>
+        <h1>{this.state.title}</h1>
         <Message messages={this.state.messages} />
         <form method="POST" onSubmit={this.handleSubmit}>
           <label>Email: 
-            <input type="text" name="email" required value={this.state.email} onChange={this.handleInputChange} /> 
+            <br/><input type="text" name="email" required value={this.state.email} onChange={this.handleInputChange} /> 
           </label><br /><br/>
           <label>First Name: 
-            <input type="text" name="fname" required value={this.state.firstName} onChange={this.handleInputChange} />
+          <br/><input type="text" name="fname" required value={this.state.firstName} onChange={this.handleInputChange} />
           </label> <br /><br/>
           <label>Last Name:
-            <input type="text" name="lname" required value={this.state.lastName} onChange={this.handleInputChange} />
+          <br/><input type="text" name="lname" required value={this.state.lastName} onChange={this.handleInputChange} />
           </label><br /><br />
           <label>
           User Type:
-          <select type="text" name="userType" required placeholder="User Type">
-          <option value="Quiz Taker" selected hidden>Select a User Type</option>
+          <br/><select type="text" name="userType" required placeholder="User Type">
+          <option value={this.state.userType} selected hidden>{this.state.userType}</option>
             <option value="Quiz Master">Quiz Master</option>
             <option value="Quiz Host">Quiz Host</option>
             <option value="Quiz Taker">Quiz Taker</option>
           </select>
         </label><br /><br />
-          <button type="submit">Update</button>
+          <button type="submit" class="btn btn-dark">Update</button>
         </form>
       </Layout>
     );
@@ -79,6 +78,7 @@ class Profile extends React.Component{
     event.preventDefault();
     fetch('/profile',
     {
+      title: 'Profile',
       method: 'POST',
       headers: {
         'Accept': 'application/json', 

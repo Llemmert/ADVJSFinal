@@ -9,15 +9,14 @@ function Login(props) {
       <Message messages={props.errors} />
       <form method="POST" action="/login">
         <label>Email:
-          <input type="text" name="email" required placeholder="Email" />
+          <br /><input type="text" name="email" required placeholder="Email" />
         </label><br />
         <label>Password:
-          <input type="password" name="password" required placeholder="Password" />
+          <br /><input type="password" name="password" required placeholder="Password" />
         </label>
         <br /><br />
-        <button type="submit">Log in</button> <br />
-        <h2>Don't have an account yet?
-          <a href="/register"> Sign up</a>
+        <button type="submit" class="btn btn-dark">Log in</button> <br />
+        <h2>Don't have an account yet? <a href="/register">Sign up</a>
         </h2>
       </form>
     </Layout>

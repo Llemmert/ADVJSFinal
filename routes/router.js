@@ -170,10 +170,10 @@ router.post(
       .trim()
       .isLength({ min: 1 })
       .withMessage('Question must be at least 1 character'),
-    check("qAnswer", "Answer must not be empty.")
+    check("answer", "Answer must not be empty.")
       .trim()
       .isLength({ min: 1 }),
-    check("qType", "Question Type must not be empty.")
+    check("roundType", "Question Type must not be empty.")
       .trim()
       .isLength({ min: 1 })
       .withMessage('Question Type must be at least 1 character long'),
@@ -198,8 +198,8 @@ router.post(
       // create a question document and insert into mongodb collection
       let question = new Question({
         qWording: req.body.qWording,
-        answer: req.body.qAnswer,
-        roundType: req.body.qType,
+        answer: req.body.answer,
+        roundType: req.body.roundType,
       })
       question.save(err => {
         if (err) {
@@ -218,6 +218,18 @@ router.post(
   }
 )
 
+router.post("/deletequestion", function (req, res, next) {
+  // create a user document and insert into mongodb collection
+  let query = {
+    _id: req.query.id
+  }
+  // check if data is there on console
+  Question.deleteOne(query, function (err) {
+    console.log(`Deleted question id: ${query}`)
+    res.redirect("/questions")
+  })
+})
+
 router.get("/questions", function (req, res, next) {
   Question.find({}, (err, questions) => {
     if (err) throw err;
@@ -231,6 +243,102 @@ router.get("/questions", function (req, res, next) {
     })
   });
 })
+
+router.get("/question/:id?", function (req, res, next) {
+  // get logged in user
+  let user = userLoggedIn(req, res)
+  var questionID = req.params.id
+  if (questionID) {
+    var question = Question.findOne({ _id: questionID }, function (err, question) {
+      res.render("./components/question", {
+        title: "Update existing question",
+        question: question,
+        user: user,
+        errors: []
+      })
+    })
+  } else {
+    res.render("./components/question", {
+      title: "Add a new question",
+      course: null,
+      errors: []
+    })
+  }
+})
+
+router.post(
+  "/question/:id?",
+  [
+    // Validate fields.
+    // express-validator
+    check("qWording", "Question must not be blank")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Question must be at least 1 character'),
+    check("answer", "Answer must not be empty.")
+      .trim()
+      .isLength({ min: 1 }),
+    check("roundType", "Question Type must not be empty.")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage('Question Type must be at least 1 character long'),
+    // Sanitize all fields.
+    sanitizeBody("*")
+      .trim()
+      .escape()
+  ],
+  function (req, res) {
+    // check authentication
+    var user = userLoggedIn(req, res)
+    // extract the validation errors from a request
+    const errors = validationResult(req)
+    // check if there are errors
+    if (!errors.isEmpty()) {
+      let context = {
+        title: "Add a new question",
+        errors: errors.array()
+      }
+      res.render("./components/question", context)
+    } else {
+      // create a user document and insert into mongodb collection
+      let question = {
+        qWording: req.body.qWording,
+        answer: req.body.answer,
+        roundType: req.body.roundType,
+      }
+      // check if the form data is for update or new course
+      var id = req.params.id
+      if (id) {
+        // update
+        updateQuestion(res, id, question)
+        let context = {
+          title: "Update Question",
+          errors: [{msg: "Question updated successfully!"}],
+          question: question
+        }
+        res.render("./components/question", context)
+      }
+      // add new course
+      else {
+        addQuestion(res, question).then((errors) => {
+          console.log('Errors: ', errors)
+          if (errors && errors.length !== 0) {
+            let context = {
+              title: "Add a new question",
+              errors: errors
+            }
+            res.render("./components/question", context)
+          }
+          else {
+            res.redirect("/questions")
+          }
+        })
+      }
+      // successful - redirect to dashboard
+      //res.redirect("/courses")
+    }
+  }
+)
 
 router.get("/logout", (req, res, next) => {
   var user = req.session.user
@@ -408,6 +516,34 @@ function updateCourse(res, id, course) {
 
 async function addCourse(res, course) {
   var c = new Course(course)
+  try {
+    await c.save();
+  }
+  catch(e) {
+    if (e instanceof MongoError) {
+      console.log(`Exception: ${e.message}`)
+      if (e.message.includes('duplicate key error'))
+        return [{msg: "Duplicate CRN not allowed"}]
+      else return []
+    }
+    else throw e;
+  }
+}
+
+function updateQuestion(res, id, question) {
+  var condition = { _id: id }
+  var option = {}
+  var update = {}
+  Question.updateOne(condition, question, option, (err, rowsAffected) => {
+    if (err) {
+      console.log(`caught the error: ${err}`)
+      return res.status(500).json(err);
+    }
+  })
+}
+
+async function addQuestion(res, question) {
+  var c = new Question(question)
   try {
     await c.save();
   }

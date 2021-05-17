@@ -25,7 +25,7 @@ function Course(props) {
           <input type="text" name="section" required placeholder="section" value={(props.course)?props.course.section:null}/>
         </label><br />
         <br /> <br />
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-dark">Save</button>
         <br /> <br />
         <a href="/courses/">Cancel</a>
       </form>

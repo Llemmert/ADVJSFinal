@@ -20,11 +20,14 @@ class Title extends React.Component {
         textAlign: "center",
         fontSize: "calc(50px + 2vmin)",
         fontFamily: "'Comic Sans MS', 'Arial Narrow Bold', sans-serif",
-        color: "rgb(29, 207, 74)"
+        color: "rgb(29, 207, 74)",
+        textDecoration: "none"
     };
       return( 
-      <div class="display-1" style={myStyle}>
+      <div>
+        <a class="display-1" style={myStyle} href={"/dashboard"}>
         {this.state.title} <br/> {this.state.subtitle}
+        </a>
       </div>
       )
     }
