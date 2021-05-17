@@ -7,7 +7,7 @@
 
 There are three main user types:
 
-- Quiz Master: Has access to:
+### Quiz Master: Has access to:
 - Questions
 - Answers
 - Adding Questions
@@ -15,11 +15,11 @@ There are three main user types:
 - Editing Questions
 
 
-- Quiz Host: Has access to:
+### Quiz Host: Has access to:
 - Questions
 - Answers
 
-- Quiz Taker: Has access to:
+### Quiz Taker: Has access to:
 - Questions
 
 ## Deliverables
