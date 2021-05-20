@@ -2,7 +2,6 @@ import React from 'react';
 import question from '../models/questions';
 import Layout from './layout';
 
-
 function QuestionTable(props){
   return (
     <table class="table table-hover table-dark">
@@ -27,10 +26,8 @@ function QuestionTable(props){
         }
       </tbody>
     </table>
-    
   )
 }
-  
   export default function Questions(props) {
     let questions;
     if (props.questions.length > 0) 

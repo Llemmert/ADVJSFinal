@@ -5,7 +5,6 @@ function Index(props) {
   return (
     <Layout title={props.title}>
       <div class="container-fluid">
-
       <h2>
           Who we are:
       </h2>

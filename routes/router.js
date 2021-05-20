@@ -12,6 +12,7 @@ const { sanitizeBody } = require("express-validator/filter")
 var User = require("../models/user")
 var Question = require("../models/questions")
 const { MongoError } = require("mongodb")
+const questions = require("../models/questions")
 
 let title = "Quiz Ninjas"
 
@@ -236,6 +237,60 @@ router.get("/questions", function (req, res, next) {
     let user = userLoggedIn(req, res)
     res.render("questions", {
       title: "All Questions",
+      user: user,
+      questions: questions,
+      errors: []
+    })
+  });
+})
+
+router.post(
+  '/round',
+  function (req, res) {
+    var user = userLoggedIn(req, res)
+    const errors = validationResult(req)
+    let qType=req.body.qType;
+    let qClass=req.body.qClass;
+    Question.find({"roundType":qType, "qClass":qClass}, (err, questions) =>{
+    if(!errors.isEmpty()) {
+      let context = {
+        title: "Generate a Trivia Round",
+        errors: errors.array()
+      }
+      res.render("./roundBuilder", context)
+    } else {
+      let context = {
+        qClass,
+        qNumber: req.body.qNumber,
+        user: user,
+        questions: questions
+      }
+      res.render("./round", context)
+    }
+  });
+}
+)
+
+// router.get("/round"), function (req, res, next) {
+//   Question.find({"roundType":{qType}}, (err, questions) =>{
+//     if (err) throw err;
+//     let user=userLoggedIn(req, res)
+//     res.render("round", {
+//       title: "Generated Round",
+//       user: user,
+//       questions: questions,
+//       errors:[]
+//     })
+//   });
+// }
+
+router.get("/roundbuilder", function (req, res, next) {
+  Question.find({}, (err, questions) => {
+    if (err) throw err;
+    //console.log(question)
+    let user = userLoggedIn(req, res)
+    res.render("roundBuilder", {
+      title: "Round Builder",
       user: user,
       questions: questions,
       errors: []
