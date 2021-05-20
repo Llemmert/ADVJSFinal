@@ -51,6 +51,7 @@ function QuestionTable(props){
           <li class="nav-item">
             <a class="nav-link active" href="/questions">Questions</a>
           </li>
+          {props.user.userType==="Quiz Taker"? null:<li class="nav-item"><a class="nav-link" href="/roundbuilder">Round Builder</a></li>}
           <li class="nav-item">
             <a class="nav-link" href="/logout">Log out</a>  
           </li>

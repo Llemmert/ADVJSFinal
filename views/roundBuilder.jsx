@@ -12,8 +12,26 @@ export default function TableFactory(props) {
     // }
     return(
         <Layout title={props.title}>
+        <div class="container-fluid">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/profile">Profile</a>
+          </li> 
+          {props.user.userType==="Quiz Master"? <li class="nav-item"><a class="nav-link" href="/addQuestion">Add Question</a> </li> : null}
+          <li class="nav-item">
+            <a class="nav-link" href="/questions">Questions</a>
+          </li>
+          {props.user.userType==="Quiz Taker"? null:<li class="nav-item"><a class="nav-link active" href="/roundbuilder">Round Builder</a></li>}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>  
+          </li>
+        </ul>
+        <h1>Round Builder</h1>
             <form method="POST" action="/round">
-        <label>
+          <label>
           <select type="text" name="qType" required placeholder="Question Type">
           <option value="" selected hidden disabled>Select a Round Type</option>
             <option value="Random Knowledge">Random Knowledge</option>
@@ -22,14 +40,7 @@ export default function TableFactory(props) {
             <option value="TV/Movie">TV/Movie</option>
             <option value="History">History</option>
             <option value="Audio">Audio</option>
-          </select>
-          </label><br /><br />
-          <label>
-          <select type="text" name="qNumber" required placeholder="Number of Questions">
-          <option value="" selected hidden disabled>Select Number of Questions</option>
-            <option value="10">10</option>
-            <option value="8">8</option>
-            <option value="5">5</option>
+            <option value="Visual">Visual</option>
           </select>
           </label><br /><br />
           <label>
@@ -42,7 +53,8 @@ export default function TableFactory(props) {
         </label><br /><br />
         <button type="submit" class="btn btn-dark">Generate Round</button>
         <br /> <br />
-      </form>
+      </form>            
+      </div>
         </Layout>
     );
 }

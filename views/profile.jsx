@@ -34,6 +34,7 @@ class Profile extends React.Component{
         <li class="nav-item">
         <a class="nav-link" href="/questions">Questions</a>
         </li>
+        {this.state.userType==="Quiz Taker"? null:<li class="nav-item"><a class="nav-link" href="/roundbuilder">Round Builder</a></li>}
         <li class="nav-item">
             <a class="nav-link" href="/logout">Log out</a>  
           </li>

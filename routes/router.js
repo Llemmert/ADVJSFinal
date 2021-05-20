@@ -153,7 +153,8 @@ router.get("/addQuestion", function (req, res, next) {
   let user = userLoggedIn(req, res)
   if(user.userType === "Quiz Master"){
   res.render("addQuestion", { 
-    title: "Add a Question to the Quiz"
+    title: "Add a Question to the Quiz",
+    user:user
   })}
   else {
     let message = "You do not have permission to add a question."
